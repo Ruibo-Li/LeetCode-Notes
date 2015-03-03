@@ -1,4 +1,4 @@
-public class Solution {
+public class Solution1 {
     public String longestPalindrome(String s) {
         if(s==null||s.length()==1) return s;
         String res = s.substring(0,1);
@@ -17,5 +17,28 @@ public class Solution {
             start--;
         }
         return s.substring(start+1,end);
+    }
+}
+
+public class Solution2 {
+    public String longestPalindrome(String s) {
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        for(int i=0;i<s.length();i++) 
+            for(int j=0;j<s.length();j++)
+                dp[i][j] = false;
+        
+        int start = 0;
+        int end = 0;
+        for(int i=0;i<s.length();i++) {
+            for(int j=0;j<i;j++) {
+                dp[j][i] = (s.charAt(j)==s.charAt(i)&&(dp[j+1][i-1]||(i-j<2)));
+                if(dp[j][i]&&(i-j)>(end-start)) {
+                    end = i;
+                    start = j;
+                }
+            }
+            dp[i][i] = true;
+        }
+        return s.substring(start,end+1);
     }
 }
