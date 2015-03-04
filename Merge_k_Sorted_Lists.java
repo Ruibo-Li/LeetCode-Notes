@@ -40,3 +40,4 @@ public class Solution {
         return head.next;
     }
 }
+//O(nklogk) runtime O(1) space
