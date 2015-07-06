@@ -1,20 +1,17 @@
 public class Solution {
-    public int jump(int[] A) {
-        int l = A.length;
-        if(l<=1) return 0;
-        int lastCover = 0;
-        int maxCover = 0;
+    public int jump(int[] nums) {
+        int max = 0;
+        int last = 0;
         int step = 0;
-        for(int i=0;i<=maxCover&&i<l;i++){
-            if(i>lastCover){
+        for(int i=0;i<=max&&i<nums.length;i++) {
+            if(i>last) {
+                last = max;
                 step++;
-                lastCover = maxCover;
             }
-            maxCover = Math.max(maxCover,i+A[i]);
+            max = Math.max(i+nums[i],max);
         }
-        if(maxCover>=l-1) return step;
-        else{
-            return -1;
-        }
-}
+        if(max>=nums.length-1)
+            return step;
+        return -1;
+    }
 }
