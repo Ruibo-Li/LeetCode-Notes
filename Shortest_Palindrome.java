@@ -18,7 +18,7 @@ public class Solution {
     
     public String check(String s, int l, int r) {
         int i;
-        for(i=1;l-i>=0;i++) {
+        for(i=1;l-i>=0&&r+i<s.length();i++) {
             if(s.charAt(l-i)!=s.charAt(r+i))
                 break;
         }
