@@ -15,19 +15,17 @@ public class Solution {
 
 
 public class Solution {
-    public int searchInsert(int[] A, int target) {
-        int len = A.length;
+    public int searchInsert(int[] nums, int target) {
+        int len = nums.length;
         if(len==0) return 0;
         int l = 0;
         int r = len-1;
         while(l<=r){
-            if(A[l]>target) return l;
-            if(A[r]<target) return r+1;
             int mid = (l+r)/2;
-            if(A[mid]==target) return mid;
-            if(A[mid]>target) r = mid-1;
-            if(A[mid]<target) l = mid+1;
+            if(nums[mid]==target) return mid;
+            if(nums[mid]>target) r = mid-1;
+            if(nums[mid]<target) l = mid+1;
         }
-        return 0;
+        return l;
     }
 }
